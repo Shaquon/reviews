@@ -39,13 +39,24 @@ npm install
 
 ## API Endpoints
 
-#### reviews
+#### reviews - Reviews for restaurant
 - GET /reviews - gets a list of reviews
 - GET /reviews/{reviewId} - get a review based on it's ID.
 - POST /reviews - create a new review
 - PUT - /reviews/{reviewId} - update an existing review
-- Delete - /reviews/{reviewId} - delete an existing review
+- DELETE - /reviews/{reviewId} - delete an existing review
 
-#### restaurants
+#### restaurants - Access restaurant data
+- GET /restaurant - gets a list of restaurants
+- GET /restaurant/{restaurantId} - get a restaurant based on it's ID.
+- POST /restaurant - create a new restaurant
+- PUT - /restaurant/{reviewId} - update an existing restaurant
+- DELETE - /reviews/{reviewId} - delete an existing restaurant
 
-#### users
+#### users - Operations about user
+
+- GET /user - gets a list of user
+- GET /user/{userId} - get a user based on it's ID.
+- POST /user - create a new restaurant
+- PUT - /user/{userId} - update an existing user
+- DELETE - /user/{userId} - delete an existing user
