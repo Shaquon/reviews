@@ -36,3 +36,16 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+
+## API Endpoints
+
+#### reviews
+- GET /reviews - gets a list of reviews
+- GET /reviews/{reviewId} - get a review based on it's ID.
+- POST /reviews - create a new review
+- PUT - /reviews/{reviewId} - update an existing review
+- Delete - /reviews/{reviewId} - delete an existing review
+
+#### restaurants
+
+#### users
