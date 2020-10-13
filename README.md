@@ -50,8 +50,8 @@ npm install
 - GET /restaurant - gets a list of restaurants
 - GET /restaurant/{restaurantId} - get a restaurant based on it's ID.
 - POST /restaurant - create a new restaurant
-- PUT - /restaurant/{reviewId} - update an existing restaurant
-- DELETE - /reviews/{reviewId} - delete an existing restaurant
+- PUT - /restaurant/{restarantId} - update an existing restaurant
+- DELETE - /reviews/{restaurantId} - delete an existing restaurant
 
 #### users - Operations about user
 
