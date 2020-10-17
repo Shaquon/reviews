@@ -43,6 +43,7 @@ npm install
 - GET /restaurants/{restaurantId}/reviews - gets a list of reviews
   Response code: 200
   Response data:
+  ```
     [
     {
       id: Number,
@@ -59,9 +60,11 @@ npm install
       ]
     }
     ]
+  ```
 - GET /restaurants/{restaurantId}/reviews/{reviewId} - get a review based on it's ID.
   Response Code: 200
   Response data:
+  ```
     {
       id: Number,
       star_rating: Number,
@@ -76,14 +79,18 @@ npm install
         String,
       ]
     }
+  ```
 - POST /reviews - create a new review
   Response code 201
   Request data format:
+  ```
     {
       text: String,
     }
+  ```
 - PUT - /reviews/{reviewId} - update an existing review
   Response code 405
+   ```
       {
         id: Number,
         star_rating: Number,
@@ -98,27 +105,30 @@ npm install
           String,
         ]
       }
+    ```
 - DELETE - /reviews/{reviewId} - delete an existing review
   Response code: 202
   reviewId: Id of review to delete
 
 #### restaurants - Access restaurant data
 - GET /restaurants - gets a list of restaurants
-[
-  {
-  id: Number,
-  name: String,
-  number_of_reviews: Number,
-  noise_level: String,
-  would_recommend: Boolean,
-  loved_for: [
-    String
-  ],
-  filters: [
-    String
-    ]
-  }
-]
+```
+  [
+    {
+    id: Number,
+    name: String,
+    number_of_reviews: Number,
+    noise_level: String,
+    would_recommend: Boolean,
+    loved_for: [
+      String
+    ],
+    filters: [
+      String
+      ]
+    }
+  ]
+```
 - GET /restaurants/{restaurantId} - get a restaurant based on it's ID.
 ```
 {
@@ -148,6 +158,7 @@ npm install
       name: String
     }
 - PUT - /restaurant/{restarantId} - update an existing restaurant
+```
 {
   id: Number,
   name: String,
@@ -167,24 +178,25 @@ npm install
     String
   ]
 }
-
+```
 - DELETE - /resturant/{restaurantId} - delete an existing restaurant
-
+```
 {
   name: String,
 }
-
+```
 or
-
+```
 {
   id: Number,
 }
-
+```
 #### users - Operations about user
 
 - GET /user - gets a list of user
   Response Code: 200
   Response Data:
+  ```
     [
       {
         id: Number,
@@ -193,28 +205,35 @@ or
         restaurants: [Strings ]
       }
     ]
+    ```
 - GET /user/{userId} - get a user based on it's ID.
   Response Code: 200
   Response Data:
+  ```
  {
     id: Number,
     username: String,
     reviews: [Strings ],
     restaurants: [Strings ]
   }
+  ```
+
 - POST /user - create a new restaurant
   Response Code: 201
   Request body:
+  ```
     {
       username: String,
     }
-
+  ```
 - PUT - /user/{userId} - update an existing user
+```
    {
     username: String,
     reviews: [Strings ],
     restaurants: [Strings ]
   }
+```
 - DELETE - /user/{userId} - delete an existing user
   Response Code: 202
   userId: Id of user to delete
