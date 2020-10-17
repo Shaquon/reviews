@@ -103,13 +103,13 @@ npm install
   reviewId: Id of review to delete
 
 #### restaurants - Access restaurant data
-- GET /restaurantss - gets a list of restaurants
+- GET /restaurants - gets a list of restaurants
 [
   {
   id: Number,
   name: String,
   number_of_reviews: Number,
-  noise_level: ‘moderate’,
+  noise_level: String,
   would_recommend: Boolean,
   loved_for: [
     String
@@ -120,7 +120,7 @@ npm install
   }
 ]
 - GET /restaurants/{restaurantId} - get a restaurant based on it's ID.
-
+``` JSON
 {
   id: Number,
   name: String,
@@ -140,7 +140,7 @@ npm install
     String
   ]
 }
-
+```
 - POST /restaurant - create a new restaurant
   Response Code: 201
   Request Body:
