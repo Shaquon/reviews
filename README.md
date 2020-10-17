@@ -120,7 +120,7 @@ npm install
   }
 ]
 - GET /restaurants/{restaurantId} - get a restaurant based on it's ID.
-``` JSON
+```
 {
   id: Number,
   name: String,
