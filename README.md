@@ -53,7 +53,7 @@ npm install
       ambience: Number,
       user: String,
       location: String,
-      visited: String,
+      last_visited: Date,
       review_count: Number,
       reviews: [
         String,
@@ -74,21 +74,19 @@ npm install
       user: String,
       location: String,
       visited: String,
-      review_count: Number,
-      reviews: [
-        String,
-      ]
+      text: String,
     }
   ```
-- POST /reviews - create a new review
+- POST /restaurants/{restaurantId}/reviews - create a new review
   Response code 201
   Request data format:
   ```
     {
       text: String,
+      // stil
     }
   ```
-- PUT - /reviews/{reviewId} - update an existing review
+- PUT - /restaurants/{restaurantId}/reviews/{reviewId} - update an existing review
   Response code 405
    ```
       {
@@ -97,16 +95,13 @@ npm install
         overall: Number,
         food: Number,
         ambience: Number,
+        service: Number,
+        value: Number,
         user: String,
-        location: String,
-        visited: String,
-        review_count: Number,
-        reviews: [
-          String,
-        ]
+        text: String,
       }
     ```
-- DELETE - /reviews/{reviewId} - delete an existing review
+- DELETE -  /restaurants/{restaurantId}/reviews/{reviewId} - delete an existing review
   Response code: 202
   reviewId: Id of review to delete
 
@@ -140,7 +135,7 @@ npm install
   rating_ambience: Number,
   rating_overall: Number,
   rating_recent: Number,
-  noise_level: ‘moderate’,
+  noise_level: String,
   would_recommend: Boolean,
   star_percentage: Number,
   loved_for: [
@@ -151,13 +146,14 @@ npm install
   ]
 }
 ```
-- POST /restaurant - create a new restaurant
+- POST /restaurants - create a new restaurant
   Response Code: 201
   Request Body:
     {
       name: String
+      // add info from above route.
     }
-- PUT - /restaurant/{restarantId} - update an existing restaurant
+- PUT - /restaurants/{restaurantId} - update an existing restaurant
 ```
 {
   id: Number,
@@ -168,7 +164,7 @@ npm install
   rating_ambience: Number,
   rating_overall: Number,
   rating_recent: Number,
-  noise_level: ‘moderate’,
+  noise_level: String,
   would_recommend: Boolean,
   star_percentage: Number,
   loved_for: [
@@ -179,18 +175,8 @@ npm install
   ]
 }
 ```
-- DELETE - /resturant/{restaurantId} - delete an existing restaurant
-```
-{
-  name: String,
-}
-```
-or
-```
-{
-  id: Number,
-}
-```
+- DELETE - /restaurants/{restaurantId} - delete an existing restaurant
+
 #### users - Operations about user
 
 - GET /user - gets a list of user
@@ -202,7 +188,7 @@ or
         id: Number,
         username: String,
         reviews: [Strings ],
-        restaurants: [Strings ]
+        favorited_restaurants: [Strings ]
       }
     ]
     ```
@@ -214,16 +200,17 @@ or
     id: Number,
     username: String,
     reviews: [Strings ],
-    restaurants: [Strings ]
+    favorited_restaurants: [Strings ]
   }
   ```
 
-- POST /user - create a new restaurant
+- POST /user - create a new user
   Response Code: 201
   Request body:
   ```
     {
       username: String,
+     // include other props
     }
   ```
 - PUT - /user/{userId} - update an existing user
