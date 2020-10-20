@@ -2,26 +2,27 @@ DROP DATABASE IF EXISTS reviews;
 
 CREATE DATABASE reviews;
 
-USE reviews;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS restaurants;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE restaurants (
-  id int NOT NULL AUTO_INCREMENT,
-  name_of_restaurant varchar(50),
-  reviews_count int,
-  overall_rating decimal(2, 1),
-  food_rating decimal(2, 1),
-  service_rating decimal(2, 1),
-  ambience_rating decimal(2, 1),
+  id BIGSERIAL NOT NULL PRIMARY KEY, -- BIGSERIAL type auto-increments
+  name varchar(50) NOT NULL,
+  review_count int,
+  overall_rating int,
+  food_rating int,
+  service_rating int,
+  ambience_rating int,
   noise_level varchar(20),
-  would_recommend decimal(3, 2),
-  star_rating integer,
+  would_recommend int,
+  star_rating int,
   loved_for text[],
-  filters text[],
-  PRIMARY KEY (id)
+  filters text[]
 );
 
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL,
   avatar varchar(100),
   first_name varchar(20),
   last_name varchar(20),
@@ -30,8 +31,9 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
-  id smallint NOT NULL AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL,
   restaurant_id int,
   user_id int,
   avatar varchar(100),
