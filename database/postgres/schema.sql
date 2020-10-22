@@ -2,48 +2,51 @@ DROP DATABASE IF EXISTS reviews;
 
 CREATE DATABASE reviews;
 
-USE reviews;
+\connect reviews;
+
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS restaurants;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE restaurants (
-  id int NOT NULL AUTO_INCREMENT,
-  name_of_restaurant varchar(50),
-  reviews_count int,
-  overall_rating decimal(2, 1),
-  food_rating decimal(2, 1),
-  service_rating decimal(2, 1),
-  ambience_rating decimal(2, 1),
-  noise_level varchar(20),
-  would_recommend decimal(3, 2),
-  star_rating integer,
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  name varchar(50) NOT NULL,
+  review_count integer,
+  overall_rating decimal,
+  food_rating decimal,
+  service_rating decimal,
+  ambience_rating decimal,
+  star_rating decimal,
+  noise_level varchar(35),
   loved_for text[],
-  filters text[],
-  PRIMARY KEY (id)
+  filters text[]
 );
+
 
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
+  id BIGSERIAL NOT NULL,
   avatar varchar(100),
-  first_name varchar(20),
-  last_name varchar(20),
-  number_of_reviews smallint,
-  location varchar,
+  first_name varchar(35),
+  last_name varchar(35),
+  number_of_reviews integer,
   PRIMARY KEY (id)
 );
 
+
 CREATE TABLE reviews (
-  id smallint NOT NULL AUTO_INCREMENT,
-  restaurant_id int,
-  user_id int,
+  id BIGSERIAL NOT NULL,
+  restaurant_id BIGSERIAL,
+  user_id BIGSERIAL,
   avatar varchar(100),
-  last_visit DATE NOT NULL,
+  last_visit varchar(30),
   text varchar(750),
-  overall_rating smallint,
-  food_rating smallint,
-  service_rating smallint,
-  ambience_rating smallint,
+  overall_rating integer,
+  food_rating integer,
+  service_rating integer,
+  ambience_rating integer,
   PRIMARY KEY (id),
   FOREIGN KEY (restaurant_id)
-    REFERENCES restaurants(id), -- set a delete on cascade
-  FOREIGN KEY (user_id) -- maybe for user??
-    REFERENCES users(id)
+    REFERENCES restaurants(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id)
+    REFERENCES users(id) ON DELETE CASCADE
 );
