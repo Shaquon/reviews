@@ -4,24 +4,15 @@ const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 const faker = require('faker');
 let counter = 0;
-/*
-  id BIGSERIAL NOT NULL,
-  avatar varchar(100),
-  first_name varchar(20),
-  last_name varchar(20),
-  number_of_reviews int,
-  location varchar(30),
-  PRIMARY KEY (id)
-*/
 
 const randomNum = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const dataGen = () => {
+const genUserData = () => {
   writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/userSeedData.csv')));
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 1000000; i++) {
     writer.write({
       id: counter++,
       first_name: faker.name.firstName(),
@@ -35,4 +26,5 @@ const dataGen = () => {
 
   console.log('Users CSV done... ');
 }
-dataGen();
+
+genUserData();

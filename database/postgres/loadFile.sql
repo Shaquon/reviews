@@ -1,4 +1,3 @@
-
 COPY restaurants
 FROM '/Users/quon/workspace2/sdc/reviews/database/postgres/csv/restaurantSeedData.csv'
 DELIMITER ','
