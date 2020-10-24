@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE restaurants (
-  id BIGSERIAL NOT NULL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   review_count integer,
   overall_rating decimal,
@@ -24,8 +24,9 @@ CREATE TABLE restaurants (
 
 
 CREATE TABLE users (
-  id BIGSERIAL NOT NULL,
+  id SERIAL,
   avatar varchar(100),
+  location varchar(100),
   first_name varchar(35),
   last_name varchar(35),
   number_of_reviews integer,
@@ -34,9 +35,9 @@ CREATE TABLE users (
 
 
 CREATE TABLE reviews (
-  id BIGSERIAL NOT NULL,
-  restaurant_id BIGSERIAL,
-  user_id BIGSERIAL,
+  id SERIAL,
+  restaurant_id integer,
+  user_id integer,
   avatar varchar(100),
   last_visit varchar(30),
   text varchar(750),

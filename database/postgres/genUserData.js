@@ -12,12 +12,12 @@ const randomNum = (min, max) => {
 const genUserData = () => {
   writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/userSeedData.csv')));
 
-  for (let i = 0; i < 1000000; i++) {
+  for (let i = 0; i < 3; i++) {
     writer.write({
-      id: counter++,
+      avatar: faker.image.imageUrl(),
+      location: faker.address.city(),
       first_name: faker.name.firstName(),
       last_name: faker.name.lastName(),
-      location: faker.address.city(),
       number_of_reviews: randomNum(0, 51)
     });
   }

@@ -13,9 +13,8 @@ const ratings = [2.0, 2.1, 2.2, 2.3, 2.4, 2.5,2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2,
 const genRestaurantData = () => {
   writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/restaurantSeedData.csv')));
 
-  for (let i = 0; i < 600000; i++) {
+  for (let i = 0; i < 3; i++) {
     writer.write({
-      restaurant_id: counter++,
       name: faker.company.companyName(),
       review_count: faker.random.number(),
       overall_rating: ratings[Math.floor(Math.random() * ratings.length)],
