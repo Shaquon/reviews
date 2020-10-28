@@ -19,6 +19,7 @@ let count = 0;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, '../public/')));
 
 
@@ -32,7 +33,7 @@ app.get('/api/restaurants/:id/reviews', async (req, res) => {
 
   console.log('data: ', data);
 
-  res.send('Hello!');
+  res.send(JSON.stringify(data));
 });
 
 

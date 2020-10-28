@@ -48,7 +48,7 @@ DELIMITER ','
 CSV HEADER;
 
 ALTER TABLE reviews
-ADD FOREIGN KEY (restaurant_id) REFERENCES restaurants(id);
+ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 -- COPY users (avatar, location, first_name,last_name,number_of_reviews)
 -- FROM '/Users/quon/workspace2/sdc/reviews/database/postgres/csv/userSeedData.csv'
@@ -59,3 +59,11 @@ ADD FOREIGN KEY (restaurant_id) REFERENCES restaurants(id);
 -- FROM '/Users/quon/workspace2/sdc/reviews/database/postgres/csv/reviewSeedData2.csv'
 -- DELIMITER ','
 -- CSV HEADER;
+
+-- For EC2 instance
+\copy restaurants (name,review_count,overall_rating,food_rating,service_rating,ambience_rating,star_rating,noise_level,loved_for,filters) FROM '/home/ubuntu/SDC/reviews/database/postgres/csv/restaurantSeedData.csv' WITH CSV HEADER;
+
+\copy reviews (restaurant_id,user_id,avatar,last_visit,text,overall_rating,food_rating,service_rating,ambience_rating) FROM '/home/ubuntu/SDC/reviews/database/postgres/csv/reviewSeedData.csv' WITH CSV HEADER;
+
+\copy users (avatar, location, first_name,last_name,number_of_reviews) FROM '/home/ubuntu/SDC/reviews/database/postgres/csv/userSeedData.csv' WITH CSV HEADER;
+
