@@ -10,8 +10,8 @@ const randomNum = (min, max) => {
 
 const genReviewData = () => {
 
-  writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/reviewSeedData.csv')));
-  for (let i = 0; i < 3; i++) {
+  writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/reviewSeedData2.csv')));
+  for (let i = 0; i < 10000000; i++) {
     writer.write({
       restaurant_id: randomNum(1,6),
       user_id: randomNum(1,2),
@@ -22,8 +22,8 @@ const genReviewData = () => {
       food_rating: randomNum(1,5),
       service_rating: randomNum(1,5),
       ambience_rating: randomNum(1,5),
-      restaurant_id: randomNum(1, 3),
-      user_id: randomNum(1, 3)
+      restaurant_id: randomNum(1, 9999999),
+      user_id: randomNum(1, 29999999)
     });
   }
 

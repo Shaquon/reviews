@@ -12,7 +12,7 @@ const randomNum = (min, max) => {
 const genUserData = () => {
   writer.pipe(fs.createWriteStream(path.join(__dirname, '/csv/userSeedData.csv')));
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 10000000; i++) {
     writer.write({
       avatar: faker.image.imageUrl(),
       location: faker.address.city(),

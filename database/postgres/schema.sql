@@ -33,7 +33,6 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
-
 CREATE TABLE reviews (
   id SERIAL,
   restaurant_id integer,
@@ -45,9 +44,21 @@ CREATE TABLE reviews (
   food_rating integer,
   service_rating integer,
   ambience_rating integer,
-  PRIMARY KEY (id),
-  FOREIGN KEY (restaurant_id)
-    REFERENCES restaurants(id) ON DELETE CASCADE,
-  FOREIGN KEY (user_id)
-    REFERENCES users(id) ON DELETE CASCADE
+  PRIMARY KEY (id)
+  -- FOREIGN KEY (restaurant_id)
+    -- REFERENCES restaurants(id) ON DELETE CASCADE,
+  -- FOREIGN KEY (user_id)
+    -- REFERENCES users(id) ON DELETE CASCADE
 );
+
+SELECT
+    TABLE_NAME,
+    COLUMN_NAME,
+    CONSTRAINT_NAME,
+    REFERENCED_TABLE_NAME,
+    REFERENCED_COLUMN_NAME
+FROM
+    reviews
+WHERE
+	REFERENCED_TABLE_SCHEMA = 'restaurants'
+    AND REFERENCED_TABLE_NAME = 'restaurant_id';
