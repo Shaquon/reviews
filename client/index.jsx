@@ -67,7 +67,8 @@ class ReviewModule extends React.Component {
   }
 
   getReviewsList(x = 1) {
-    axios.get(`/api/review_list/${x}`)
+    axios.get(`/api/restaurants/${x}/reviews`)
+      // .then(res=>res.json())
       .then((res) => {
         this.setState({
           reviewsList: res.data,
@@ -79,13 +80,14 @@ class ReviewModule extends React.Component {
   }
 
   render() {
-    // const { restaurant } = this.state;
     const { reviewsList } = this.state;
     const reviewLength = reviewsList.length;
+    console.log(reviewsList);
     const full = [];
+
     for (let i = 0; i < reviewLength; i += 1) {
       let starArray = [];
-      for (let j = 0; j < Math.floor(reviewsList[i].rating_overall); j += 1) {
+      for (let j = 0; j < Math.floor(reviewsList[i].overall_rating); j += 1) {
         starArray.push('star');
       }
       full.push(starArray);
@@ -93,7 +95,7 @@ class ReviewModule extends React.Component {
     const partial = [];
     for (let i = 0; i < reviewLength; i += 1) {
       let starArray = [];
-      for (let j = 0; j < Math.ceil(reviewsList[i].rating_overall) - Math.floor(reviewsList[i].rating_overall); j += 1) {
+      for (let j = 0; j < Math.ceil(reviewsList[i].overall_rating) - Math.floor(reviewsList[i].rating_overall); j += 1) {
         starArray.push('star');
       }
       partial.push(starArray);
@@ -101,7 +103,7 @@ class ReviewModule extends React.Component {
     const empty = [];
     for (let i = 0; i < reviewLength; i += 1) {
       let starArray = [];
-      for (let j = 0; j < 5 - Math.ceil(reviewsList.rating_overall); j += 1) {
+      for (let j = 0; j < 5 - Math.ceil(reviewsList.overall_rating); j += 1) {
         starArray.push('star');
       }
       empty.push(starArray);
