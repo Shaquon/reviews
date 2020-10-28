@@ -83,6 +83,7 @@ class ReviewModule extends React.Component {
     const { reviewsList } = this.state;
     const reviewLength = reviewsList.length;
     console.log(reviewsList);
+
     const full = [];
 
     for (let i = 0; i < reviewLength; i += 1) {
@@ -95,7 +96,7 @@ class ReviewModule extends React.Component {
     const partial = [];
     for (let i = 0; i < reviewLength; i += 1) {
       let starArray = [];
-      for (let j = 0; j < Math.ceil(reviewsList[i].overall_rating) - Math.floor(reviewsList[i].rating_overall); j += 1) {
+      for (let j = 0; j < Math.ceil(reviewsList[i].overall_rating) - Math.floor(reviewsList[i].overall_rating); j += 1) {
         starArray.push('star');
       }
       partial.push(starArray);

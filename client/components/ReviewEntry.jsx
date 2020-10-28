@@ -217,14 +217,18 @@ const Report = styled.div`
   color: #6f737b;
 `;
 
-const ReviewEntry = (props) => (
+const ReviewEntry = (props) => {
 
+  console.log("props.review: ",props.review.avatar);
+  console.log("props.lastName: ",props.review.last_name);
+
+  return (
   <Wrapper>
     <Left>
       <AvatarBox>
-        <AvatarImg src={props.review.avatar} alt="" />
+        <AvatarImg src="hello" alt="" />
       </AvatarBox>
-      <Names>{`${props.review.first_name + props.review.last_name[0]}`}</Names>
+      <Names>{`${props.review.first_name + props.review.last_name}`}</Names>
       <Location>{props.review.locale}</Location>
       <UserReviewBlock>
         <CommentBoxIcon width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -281,5 +285,6 @@ const ReviewEntry = (props) => (
   </Wrapper>
 
 );
+}
 
 export default ReviewEntry;
