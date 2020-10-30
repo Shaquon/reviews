@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const postgres = require('postgres');
+
 require('dotenv').config();
+require('newrelic');
 
 // const db = require('../database/postgres/model.js');
-// require('newrelic');
 
 const DB_PORT = process.env.DB_PORT;
 const DB_HOST = process.env.DB_HOST;
@@ -41,16 +42,13 @@ app.get('/api/restaurants/:id/reviews', async (req, res) => {
 });
 
 app.get('/api/restaurants/:id', async (req, res) => {
-
   console.log('req.params.id', req.params);
-
   const data = await sql`
-  SELECT * FROM restaurants WHERE id=1;
+  SELECT * FROM restaurants WHERE id=${req.params.id};
   `
-
   console.log('data: ', data);
 
-  res.send('Hello!');
+  res.send(JSON.stringify(data));
 });
 
 const randomNum = (min, max) => {
