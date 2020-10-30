@@ -226,10 +226,10 @@ const ReviewEntry = (props) => {
   <Wrapper>
     <Left>
       <AvatarBox>
-        <AvatarImg src="hello" alt="" />
+        <AvatarImg src={props.review.avatar} alt="" />
       </AvatarBox>
       <Names>{`${props.review.first_name + props.review.last_name}`}</Names>
-      <Location>{props.review.locale}</Location>
+      <Location>{props.review.localation}</Location>
       <UserReviewBlock>
         <CommentBoxIcon width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
           <title>universal / icon / details / small / ic_ticket copy</title>

@@ -1,13 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/prop-types */
-/* eslint-disable max-len */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-// import RestaurantInfo from './components/RestaurantInfo';
 import ReviewEntry from './components/ReviewEntry';
 import FullStar from './components/FullStar';
 

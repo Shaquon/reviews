@@ -1,16 +1,24 @@
-/* eslint-disable no-console */
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+
+const postgres = require('postgres');
+require('dotenv').config();
+
 // const db = require('../database/postgres/model.js');
 // require('newrelic');
 
-const postgres = require('postgres');
+const DB_PORT = process.env.DB_PORT;
+const DB_HOST = process.env.DB_HOST;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+
 
 const sql = postgres({
-  host: 'localhost',
-  port        : 5432,
-  database    : 'reviews',
+  host     : DB_HOST,
+  port     :  DB_PORT,
+  database : 'reviews',
+  user     : 'postgres',
+  password : DB_PASSWORD
 });
 
 const app = express();
@@ -24,13 +32,9 @@ app.use(express.static(path.join(__dirname, '../public/')));
 
 
 app.get('/api/restaurants/:id/reviews', async (req, res) => {
-
-  // console.log('req.params.id', req.params.id);
-
   const data = await sql`
-  SELECT * FROM reviews WHERE restaurant_id=${req.params.id};
+  SELECT * FROM reviews FULL OUTER JOIN users ON reviews.user_id=users.id WHERE restaurant_id=${req.params.id};
   `
-
   console.log('data: ', data);
 
   res.send(JSON.stringify(data));
@@ -39,16 +43,15 @@ app.get('/api/restaurants/:id/reviews', async (req, res) => {
 
 app.get('/api/restaurants/:id', async (req, res) => {
 
-  console.log('req.params.id', req.params.id);
+  console.log('req.params.id', req.params);
 
   const data = await sql`
-  SELECT * FROM restaurants WHERE id=${req.params.id};
+  SELECT * FROM restaurants WHERE id=1;
   `
 
   console.log('data: ', data);
 
   res.send('Hello!');
-
 });
 
 const randomNum = (min, max) => {
