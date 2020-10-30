@@ -87,6 +87,7 @@ class ReviewModule extends React.Component {
       }
       full.push(starArray);
     }
+
     const partial = [];
     for (let i = 0; i < reviewLength; i += 1) {
       let starArray = [];

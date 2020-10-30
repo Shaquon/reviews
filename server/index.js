@@ -12,7 +12,7 @@ const DB_PORT = process.env.DB_PORT;
 const DB_HOST = process.env.DB_HOST;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 
-
+console.log('changes file')
 const sql = postgres({
   host     : DB_HOST,
   port     :  DB_PORT,
@@ -39,7 +39,6 @@ app.get('/api/restaurants/:id/reviews', async (req, res) => {
 
   res.send(JSON.stringify(data));
 });
-
 
 app.get('/api/restaurants/:id', async (req, res) => {
 
