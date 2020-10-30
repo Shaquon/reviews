@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const postgres = require('postgres');
+const cors = require('cors');
 
 require('dotenv').config();
 require('newrelic');
@@ -28,7 +29,7 @@ let count = 0;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../public/')));
 
 
